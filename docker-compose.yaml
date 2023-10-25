@@ -8,12 +8,12 @@ services:
     ports:
       - 8080:8080
     environment:
-      - KEYCLOAK_ADMIN=admin
-      - KEYCLOAK_ADMIN_PASSWORD=admin
-      - KC_DB=mysql
-      - KC_DB_URL=jdbc:mysql://db:3306/keycloak
-      - KC_DB_USERNAME=root
-      - KC_DB_PASSWORD=root
+      - KEYCLOAK_ADMIN=${KEYCLOAK_ADMIN}
+      - KEYCLOAK_ADMIN_PASSWORD=${KEYCLOAK_ADMIN_PASSWORD}
+      - KC_DB=${KC_DB}
+      - KC_DB_URL=${KC_DB_URL}
+      - KC_DB_USERNAME=${KC_DB_USERNAME}
+      - KC_DB_PASSWORD=${KC_DB_PASSWORD}
     # volumes:
     #   - ./prefeitura-theme:/opt/jboss/keycloak/themes/prefeitura-theme
     depends_on:
@@ -28,8 +28,8 @@ services:
     volumes:
       - ./.docker/dbdata:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=keycloak
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
     security_opt:
       - seccomp:unconfined
     healthcheck:
